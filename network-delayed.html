@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Slow API Demo</title>
+</head>
+<body>
+<div class="price">—</div>
+
+<script>
+    // Real network request with ~8s delay
+    fetch('https://httpbin.org/delay/8')
+        .then(res => res.json())
+        .then(() => {
+            document.querySelector('.price').textContent = '₹999';
+        })
+        .catch(err => {
+            console.error(err);
+            document.querySelector('.price').textContent = 'error';
+        });
+</script>
+</body>
+</html>
